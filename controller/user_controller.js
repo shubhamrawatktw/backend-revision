@@ -10,20 +10,23 @@ const createUser = async (req, res) => {
     }
 
     const user = await User.findOne({ email: email.trim() });
-     if (user) {
-         return res.json({msg:"User already exist"})
-     }
+    if (user) {
+      return res.json({ msg: "User already exist" });
+    }
 
-   const userCreated =  await User.create({email,name,password})
-   return res.status(200).json({msg:"User created successfully",data:userCreated})
-
-
-
+    const userCreated = await User.create({ email, name, password });
+    return res
+      .status(200)
+      .json({ msg: "User created successfully", data: userCreated });
   } catch (error) {
     console.log(error, "error");
   }
 };
 
+const signIn = async (req,res) => {
+    res.json({msg:"home"})
+}
+
 module.exports = {
-  createUser,
+  createUser,signIn
 };
